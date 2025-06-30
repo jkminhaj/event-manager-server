@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { GetEvfadents } from "./Users.controller.js";
+import { loginUser, registerUser } from "./Users.controller.js";
 
 const UserRoutes = Router() ;
 
-UserRoutes.get("/get_assignments/:courseId",GetEvfadents);
+UserRoutes.post("/login",loginUser);
+UserRoutes.post("/register",registerUser);
 
 export default UserRoutes ;

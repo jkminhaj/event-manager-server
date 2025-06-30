@@ -1,8 +1,15 @@
 import { Router } from "express";
-import { GetEvents } from "./Events.controller.js";
+import { createEvent, deleteEvent, getAllEvents, getEventById, getMyEvents, joinEvent, leaveEvent, updateEvent } from "./Events.controller.js";
 
 const EventRoutes = Router() ;
 
-EventRoutes.get("/get_assignments/:courseId",GetEvents);
+EventRoutes.get('/', getAllEvents);
+EventRoutes.get('/:id', getEventById);
+EventRoutes.post('/', createEvent);
+EventRoutes.put('/:id', updateEvent);
+EventRoutes.delete('/:id', deleteEvent);
+EventRoutes.post('/join/:id', joinEvent);
+EventRoutes.post('/leave/:id', leaveEvent);
+EventRoutes.post('/myevents', getMyEvents);
 
 export default EventRoutes ;
