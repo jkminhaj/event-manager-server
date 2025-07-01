@@ -10,6 +10,6 @@ EventRoutes.put('/:id', updateEvent);
 EventRoutes.delete('/:id', deleteEvent);
 EventRoutes.post('/join/:id', joinEvent);
 EventRoutes.post('/leave/:id', leaveEvent);
-EventRoutes.post('/myevents', getMyEvents);
+EventRoutes.get('/myevents/:id', getMyEvents);
 
 export default EventRoutes ;

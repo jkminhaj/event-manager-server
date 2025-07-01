@@ -2,11 +2,11 @@ import Event from "./Events.model.js";
 
 export const createEvent = async (req, res) => {
   try {
-    const { title, name, dateTime, location, description , owner } = req.body;
+    const { title, name, dateTime, location, description , owner , attendeeCount } = req.body;
     if (!title || !name || !dateTime || !location || !description || !owner) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-    const newEvent = await Event.create({ title, name, dateTime, location, description , owner });
+    const newEvent = await Event.create({ title, name, dateTime, location, description , owner , attendeeCount });
     res.status(201).json(newEvent);
   } catch (err) {
     res.status(500).json({ message: 'Failed to create event', error: err.message });
@@ -96,7 +96,7 @@ export const leaveEvent = async (req, res) => {
 
 export const getMyEvents = async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.params.id;
 
     const events = await Event.find({ owner: userId });
 
